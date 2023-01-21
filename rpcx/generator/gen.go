@@ -1,9 +1,9 @@
 package generator
 
 import (
+	"github.com/gioco-play/goctl-gfrpc/rpcx/parser"
 	"path/filepath"
 
-	"github.com/zeromicro/go-zero/tools/goctl/rpc/parser"
 	"github.com/zeromicro/go-zero/tools/goctl/util/console"
 	"github.com/zeromicro/go-zero/tools/goctl/util/ctx"
 	"github.com/zeromicro/go-zero/tools/goctl/util/pathx"
@@ -66,6 +66,16 @@ func (g *Generator) Generate(zctx *ZRpcContext) error {
 	}
 
 	err = g.GenEtc(dirCtx, proto, g.cfg)
+	if err != nil {
+		return err
+	}
+
+	err = g.GenEnv(dirCtx, proto, g.cfg)
+	if err != nil {
+		return err
+	}
+
+	err = g.GenMakefile(dirCtx, proto, g.cfg)
 	if err != nil {
 		return err
 	}

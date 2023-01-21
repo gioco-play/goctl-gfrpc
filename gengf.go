@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
+	"github.com/gioco-play/goctl-gfrpc/rpcx"
 	"github.com/logrusorgru/aurora"
 	"github.com/spf13/cobra"
-	"github.com/zeromicro/go-zero/tools/goctl/rpc"
 	"os"
 	"strings"
 )
@@ -27,7 +27,7 @@ var (
 )
 
 func init() {
-	rootCmd.AddCommand(rpc.Cmd)
+	rootCmd.AddCommand(rpcx.Cmd)
 }
 
 func supportGoStdFlag(args []string) []string {

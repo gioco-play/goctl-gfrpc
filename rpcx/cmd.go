@@ -1,8 +1,8 @@
 package rpcx
 
 import (
+	"github.com/gioco-play/goctl-gfrpc/rpcx/cli"
 	"github.com/spf13/cobra"
-	"github.com/zeromicro/go-zero/tools/goctl/rpc/cli"
 )
 
 var (

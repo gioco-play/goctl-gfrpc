@@ -2,12 +2,12 @@ package cli
 
 import (
 	"errors"
+	"github.com/gioco-play/goctl-gfrpc/rpcx/generator"
 	"os"
 	"path/filepath"
 	"strings"
 
 	"github.com/spf13/cobra"
-	"github.com/zeromicro/go-zero/tools/goctl/rpc/generator"
 	"github.com/zeromicro/go-zero/tools/goctl/util"
 	"github.com/zeromicro/go-zero/tools/goctl/util/pathx"
 )

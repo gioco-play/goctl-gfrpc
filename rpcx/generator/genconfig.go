@@ -2,12 +2,12 @@ package generator
 
 import (
 	_ "embed"
+	"github.com/gioco-play/goctl-gfrpc/rpcx/parser"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 
 	conf "github.com/zeromicro/go-zero/tools/goctl/config"
-	"github.com/zeromicro/go-zero/tools/goctl/rpc/parser"
 	"github.com/zeromicro/go-zero/tools/goctl/util/format"
 	"github.com/zeromicro/go-zero/tools/goctl/util/pathx"
 )

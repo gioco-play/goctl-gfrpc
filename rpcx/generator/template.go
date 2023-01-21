@@ -13,9 +13,11 @@ const (
 	callFunctionTemplateFile          = "call-func.tpl"
 	configTemplateFileFile            = "config.tpl"
 	etcTemplateFileFile               = "etc.tpl"
+	envTemplateFileFile               = "env.tpl"
 	logicTemplateFileFile             = "logic.tpl"
 	logicFuncTemplateFileFile         = "logic-func.tpl"
 	mainTemplateFile                  = "main.tpl"
+	makefileTemplateFile              = "makefile.tpl"
 	serverTemplateFile                = "server.tpl"
 	serverFuncTemplateFile            = "server-func.tpl"
 	svcTemplateFile                   = "svc.tpl"
@@ -26,9 +28,11 @@ var templates = map[string]string{
 	callTemplateFile:          callTemplateText,
 	configTemplateFileFile:    configTemplate,
 	etcTemplateFileFile:       etcTemplate,
+	envTemplateFileFile:       envTemplate,
 	logicTemplateFileFile:     logicTemplate,
 	logicFuncTemplateFileFile: logicFunctionTemplate,
 	mainTemplateFile:          mainTemplate,
+	makefileTemplateFile:      makefileTemplate,
 	serverTemplateFile:        serverTemplate,
 	serverFuncTemplateFile:    functionTemplate,
 	svcTemplateFile:           svcTemplate,
