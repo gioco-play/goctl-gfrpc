@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/gioco-play/goctl-gfrpc/rpcx"
+	"github.com/gioco-play/goctl-gfrpc/tplx"
 	"github.com/logrusorgru/aurora"
 	"github.com/spf13/cobra"
 	"os"
@@ -27,6 +28,7 @@ var (
 )
 
 func init() {
+	rootCmd.AddCommand(tplx.Cmd)
 	rootCmd.AddCommand(rpcx.Cmd)
 }
 

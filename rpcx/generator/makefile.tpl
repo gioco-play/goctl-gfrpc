@@ -2,7 +2,7 @@ lang:
 	easyi18n generate --pkg=locales ../locales ../locales/locales.go
 
 rpc:
-	 goctl rpc protoc {{.serviceName}}.proto --zrpc_out=. --go-grpc_out=. --go_out=.
+	 goctl-gfrpc rpc protoc {{.serviceName}}.proto --zrpc_out=. --go-grpc_out=. --go_out=. --home ../template
 
 run:
 	go run {{.serviceName}}.go -f etc/{{.serviceName}}.yaml -env etc/.env

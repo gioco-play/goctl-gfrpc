@@ -29,6 +29,7 @@ require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/fatih/color v1.13.0 // indirect
+	github.com/fatih/structtag v1.2.0 // indirect
 	github.com/felixge/fgprof v0.9.3 // indirect
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/go-logr/logr v1.2.3 // indirect
@@ -82,6 +83,7 @@ require (
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/subosito/gotenv v1.2.0 // indirect
+	github.com/zeromicro/antlr v0.0.1 // indirect
 	go.etcd.io/etcd/api/v3 v3.5.5 // indirect
 	go.etcd.io/etcd/client/pkg/v3 v3.5.5 // indirect
 	go.etcd.io/etcd/client/v3 v3.5.5 // indirect
