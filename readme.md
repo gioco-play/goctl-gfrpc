@@ -2,14 +2,14 @@
  # 版號更新時務必使用 1.0.1 三個數字組成
  # 安裝
 ```shell
- go install github.com/gioco-play/goctl-gfrpc
+ go install github.com/gioco-play/goctl-gfrpc@latest
 ```
 
  
  # 使用
 #### test 為資料夾
 ```shell
- goctl-gfrpc rpc protoc test/test.proto --zrpc_out=test --go-grpc_out=test --go_out=test --home template
+ goctl-gfrpc rpc protoc test/test.proto --zrpc_out=test --go-grpc_out=test --go_out=test ㄈ
 ```
 
 # 遠端範本
