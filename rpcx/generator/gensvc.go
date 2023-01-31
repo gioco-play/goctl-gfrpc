@@ -30,15 +30,7 @@ func (g *Generator) GenSvc(ctx DirContext, _ parser.Proto, cfg *conf.Config) err
 		return err
 	}
 
-	configImport := fmt.Sprintf("\n\t\"%s\"", "fmt")
-	configImport += fmt.Sprintf("\n\t\"%s\"", "github.com/gioco-play/go-driver/postgrez")
-	configImport += fmt.Sprintf("\n\t\"%s\"", "github.com/go-redis/redis/v8")
-	configImport += fmt.Sprintf("\n\t\"%s\"", "gorm.io/gorm")
-	configImport += fmt.Sprintf("\n\t\"%s\"", "strings")
-	configImport += fmt.Sprintf("\n\t\"%s\"", "github.com/gioco-play/go-driver/logrusz")
-
 	return util.With("svc").GoFmt(true).Parse(text).SaveTo(map[string]interface{}{
-		"imports":      fmt.Sprintf(`"%v"`, ctx.GetConfig().Package),
-		"configImport": configImport,
+		"imports": fmt.Sprintf(`"%v"`, ctx.GetConfig().Package),
 	}, fileName, false)
 }

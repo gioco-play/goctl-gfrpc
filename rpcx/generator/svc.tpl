@@ -1,8 +1,14 @@
 package svc
 
 import (
+    "fmt"
     {{.imports}}
-    {{.configImport}}
+
+    "github.com/go-redis/redis/v8"
+    "github.com/neccoys/go-driver/postgrex"
+    "gorm.io/gorm"
+    "gorm.io/gorm/logger"
+    "strings"
 )
 
 type ServiceContext struct {
@@ -20,11 +26,11 @@ func NewServiceContext(c config.Config) *ServiceContext {
 	})
 
 	// DB
-	db, err := postgrez.New(c.Postgres.Host, fmt.Sprintf("%d", c.Postgres.Port), c.Postgres.UserName,
+	db, err := postgrex.New(c.Postgres.Host, fmt.Sprintf("%d", c.Postgres.Port), c.Postgres.UserName,
 		c.Postgres.Password, c.Postgres.DBName).
 		SetTimeZone(c.Postgres.DBTimezone).
-		SetLogger(logrusz.New().SetLevel(c.Postgres.DBDebugLevel).Writer()).
-		Connect(postgrez.Pool(c.Postgres.DBPoolSize, c.Postgres.DBPoolSize, c.Postgres.DBConnMaxLifetime))
+		SetLogger(logger.Default.LogMode(postgrex.Level(c.Postgres.DBDebugLevel))).
+		Connect(postgrex.Pool(c.Postgres.DBPoolMin, c.Postgres.DBPoolMax, c.Postgres.DBConnMaxLifetime))
 
 	if err != nil {
 		panic(err)
