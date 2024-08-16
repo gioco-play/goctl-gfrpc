@@ -9,7 +9,7 @@
  # 使用
 #### test 為資料夾
 ```shell
- goctl-gfrpc rpc protoc test/test.proto --zrpc_out=test --go-grpc_out=test --go_out=test ㄈ
+ goctl-gfrpc rpc protoc test/test.proto --zrpc_out=test --go-grpc_out=test --go_out=test --home template
 ```
 
 # 遠端範本
