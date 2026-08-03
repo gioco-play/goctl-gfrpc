@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/emicklei/proto v1.11.1
-	github.com/gioco-play/goctl-gfdep v0.0.0-20260803084529-a8ce238571c0
+	github.com/gioco-play/goctl-gfdep v0.0.0-20260803104102-311c4d472eca
 	github.com/logrusorgru/aurora v2.0.3+incompatible
 	github.com/spf13/cobra v1.6.1
 	github.com/stretchr/testify v1.8.1
