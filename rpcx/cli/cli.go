@@ -44,6 +44,8 @@ var (
 	VarBoolVerbose bool
 	// VarBoolMultiple describes whether support generating multiple rpc services or not.
 	VarBoolMultiple bool
+	// VarStringName describes the dependency name to inject via add-dep.
+	VarStringName string
 )
 
 // RPCNew is to generate rpc greet service, this greet service can speed

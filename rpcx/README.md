@@ -1,54 +1,54 @@
 # Rpc Generation
 
-Goctl Rpc是`goctl`脚手架下的一个rpc服务代码生成模块，支持proto模板生成和rpc服务代码生成，通过此工具生成代码你只需要关注业务逻辑编写而不用去编写一些重复性的代码。这使得我们把精力重心放在业务上，从而加快了开发效率且降低了代码出错率。
+Goctl Rpc 是 `goctl` 腳手架下的一個 rpc 服務程式碼產生模組，支援 proto 範本產生和 rpc 服務程式碼產生，透過此工具產生程式碼你只需要專注在商業邏輯的撰寫，不用再寫一些重複性的程式碼。這讓我們能把心力放在商業邏輯上，進而加快開發效率並降低出錯率。
 
 ## 特性
 
-* 简单易用
-* 快速提升开发效率
-* 出错率低
-* 贴近 protoc
+* 簡單易用
+* 快速提升開發效率
+* 出錯率低
+* 貼近 protoc
 
 
-## 快速开始
+## 快速開始
 
-### 方式一：快速生成greet服务
+### 方式一：快速產生 greet 服務
 
-  通过命令 `goctl rpc new ${servieName}`生成
+  透過指令 `goctl rpc new ${servieName}` 產生
 
-  如生成greet rpc服务：
+  如產生 greet rpc 服務：
 
   ```Bash
   goctl rpc new greet
   ```
 
-  执行后代码结构如下:
+  執行後程式碼結構如下:
 
 ```text
 .
 └── greet
     ├── etc
-    │   └── greet.yaml
+    │   └── greet.yaml
     ├── greet
-    │   ├── greet.go
-    │   ├── greet.pb.go
-    │   └── greet_grpc.pb.go
+    │   ├── greet.go
+    │   ├── greet.pb.go
+    │   └── greet_grpc.pb.go
     ├── greet.go
     ├── greet.proto
     └── internal
         ├── config
-        │   └── config.go
+        │   └── config.go
         ├── logic
-        │   └── pinglogic.go
+        │   └── pinglogic.go
         ├── server
-        │   └── greetserver.go
+        │   └── greetserver.go
         └── svc
             └── servicecontext.go
 ```
 
-### 方式二：通过指定proto生成rpc服务
+### 方式二：透過指定 proto 產生 rpc 服務
 
-* 生成proto模板
+* 產生 proto 範本
 
 ```Bash
 $ goctl rpc template -o=user.proto
@@ -74,7 +74,7 @@ service User {
 ```
   
 
-* 生成rpc服务代码
+* 產生 rpc 服務程式碼
 
 ```bash
 $ goctl rpc protoc  user.proto --go_out=. --go-grpc_out=. --zrpc_out=.
@@ -83,7 +83,7 @@ $ goctl rpc protoc  user.proto --go_out=. --go-grpc_out=. --zrpc_out=.
 
 ## 用法
 
-### rpc 服务生成用法
+### rpc 服務產生用法
 
 ```Bash
 $ goctl rpc protoc -h
@@ -107,30 +107,67 @@ Flags:
       --zrpc_out string   The zrpc output directory
 ```
 
-### 参数说明
+### 參數說明
 
-* --branch 指定远程仓库模板分支
-* --home 指定goctl模板根目录
-* -m, --multiple 指定生成多个rpc服务模式, 默认为 false, 如果为  false, 则只支持生成一个rpc service, 如果为 true, 则支持生成多个 rpc service，且多个 rpc service 会分组。
-* --style 指定文件输出格式
-* -v, --verbose 显示日志
-* --zrpc_out 指定zrpc输出目录
+* --branch 指定遠端倉庫範本分支
+* --home 指定 goctl 範本根目錄
+* -m, --multiple 指定產生多個 rpc 服務模式，預設為 false，若為 false，則只支援產生一個 rpc service；若為 true，則支援產生多個 rpc service，且多個 rpc service 會分組。
+* --style 指定檔案輸出格式
+* -v, --verbose 顯示日誌
+* --zrpc_out 指定 zrpc 輸出目錄
 
 > ## --multiple
-> 是否开启多个 rpc service 生成，如果开启，则满足一下新特性
-> 1. 支持 1 到多个 rpc service 
-> 2. 生成 rpc 服务会按照服务名称分组（尽管只有一个 rpc service）
-> 3. rpc client 的文件目录变更为固定名称 `client`
-> 
-> 如果不开启，则和旧版本 rpc 生成逻辑一样（兼容）
-> 1. 有且只能有一个 rpc service
+> 是否開啟多個 rpc service 產生，若開啟，則具備以下新特性
+> 1. 支援 1 到多個 rpc service
+> 2. 產生的 rpc 服務會依照服務名稱分組（即便只有一個 rpc service）
+> 3. rpc client 的檔案目錄改為固定名稱 `client`
+>
+> 若不開啟，則和舊版本 rpc 產生邏輯一樣（相容）
+> 1. 有且只能有一個 rpc service
 
+### add-dep 用法
 
-## rpc 服务生成 example
-详情见 [example/rpc](https://github.com/zeromicro/go-zero/tree/master/tools/goctl/example)
+```Bash
+$ goctl-gfrpc rpc add-dep -h
+Inject a dependency into an existing service
 
-## --multiple 为 true 和 false 的目录区别
-源 proto 文件
+Usage:
+  goctl-gfrpc rpc add-dep [flags]
+
+Examples:
+goctl-gfrpc rpc add-dep --name=transaction --remote https://github.com/gioco-play/gf-template
+
+Flags:
+      --branch string   The branch of the remote repo, it does work with --remote
+  -h, --help            help for add-dep
+      --home string     The goctl home path of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+      --name string     The dependency name, matching <template repo>/deps/<name>.tpl
+      --remote string   The remote git repo of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+```
+
+#### 參數說明
+
+* --name 指定要注入的依賴名稱，對應 `<template repo>/deps/<name>.tpl`
+* --home 指定 goctl 範本根目錄
+* --remote 指定遠端倉庫範本網址
+* --branch 指定遠端倉庫範本分支
+
+#### 用途
+
+把一個依賴（rpc client、consul 設定讀取等）注入到**已經產生好**的服務裡，補齊 `internal/config/config.go`、`internal/svc/servicecontext.go`、`etc/*.yaml`、`etc/.env` 中該依賴需要的部分。必須在服務目錄（含 `internal/`、`etc/` 的那層，跟 `make rpc` 同一層）下執行。重複執行同一個 `--name` 不會重複插入。依賴的定義方式見 [gf-template 的 deps/ 說明](https://github.com/gioco-play/gf-template#deps)。
+
+#### 範例
+
+```Bash
+cd obfish-vendor-go/rpc
+goctl-gfrpc rpc add-dep --name=transaction --remote https://github.com/gioco-play/gf-template
+```
+
+## rpc 服務產生 example
+詳情見 [example/rpc](https://github.com/zeromicro/go-zero/tree/master/tools/goctl/example)
+
+## --multiple 為 true 和 false 的目錄差異
+來源 proto 檔案
 
 ```protobuf
 syntax = "proto3";
@@ -156,46 +193,46 @@ service Greet {
 
 ```text
 hello
-├── client // 区别1：rpc client 目录固定为 client 名称
-│   └── greet // 区别2：会按照 rpc service 名称分组
-│       └── greet.go
+├── client // 差異1：rpc client 目錄固定為 client 名稱
+│   └── greet // 差異2：會依照 rpc service 名稱分組
+│       └── greet.go
 ├── etc
-│   └── hello.yaml
+│   └── hello.yaml
 ├── hello.go
 ├── internal
-│   ├── config
-│   │   └── config.go
-│   ├── logic
-│   │   └── greet // 区别2：会按照 rpc service 名称分组
-│   │       └── sayhellologic.go
-│   ├── server
-│   │   └── greet // 区别2：会按照 rpc service 名称分组
-│   │       └── greetserver.go
-│   └── svc
-│       └── servicecontext.go
+│   ├── config
+│   │   └── config.go
+│   ├── logic
+│   │   └── greet // 差異2：會依照 rpc service 名稱分組
+│   │       └── sayhellologic.go
+│   ├── server
+│   │   └── greet // 差異2：會依照 rpc service 名稱分組
+│   │       └── greetserver.go
+│   └── svc
+│       └── servicecontext.go
 └── pb
     └── hello
         ├── hello.pb.go
         └── hello_grpc.pb.go
 ```
 
-### --multiple=false (旧版本目录，向后兼容)
+### --multiple=false (舊版本目錄，向後相容)
 ```text
 hello
 ├── etc
-│   └── hello.yaml
+│   └── hello.yaml
 ├── greet
-│   └── greet.go
+│   └── greet.go
 ├── hello.go
 ├── internal
-│   ├── config
-│   │   └── config.go
-│   ├── logic
-│   │   └── sayhellologic.go
-│   ├── server
-│   │   └── greetserver.go
-│   └── svc
-│       └── servicecontext.go
+│   ├── config
+│   │   └── config.go
+│   ├── logic
+│   │   └── sayhellologic.go
+│   ├── server
+│   │   └── greetserver.go
+│   └── svc
+│       └── servicecontext.go
 └── pb
     └── hello
         ├── hello.pb.go

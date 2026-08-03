@@ -37,6 +37,13 @@ var (
 		Args:    cobra.ExactValidArgs(1),
 		RunE:    cli.ZRPC,
 	}
+
+	addDepCmd = &cobra.Command{
+		Use:     "add-dep",
+		Short:   "Inject a dependency into an existing service",
+		Example: "goctl-gfrpc rpc add-dep --name=transaction --remote https://github.com/gioco-play/gf-template",
+		RunE:    cli.AddDep,
+	}
 )
 
 func init() {
@@ -109,7 +116,19 @@ func init() {
 	templateCmd.Flags().StringVar(&cli.VarStringBranch, "branch", "", "The branch"+
 		" of the remote repo, it does work with --remote")
 
+	addDepCmd.Flags().StringVar(&cli.VarStringName, "name", "", "The dependency name, "+
+		"matching <template repo>/deps/<name>.tpl")
+	addDepCmd.Flags().StringVar(&cli.VarStringHome, "home", "", "The goctl home path "+
+		"of the template, --home and --remote cannot be set at the same time, if they are, --remote "+
+		"has higher priority")
+	addDepCmd.Flags().StringVar(&cli.VarStringRemote, "remote", "", "The remote git "+
+		"repo of the template, --home and --remote cannot be set at the same time, if they are, "+
+		"--remote has higher priority")
+	addDepCmd.Flags().StringVar(&cli.VarStringBranch, "branch", "",
+		"The branch of the remote repo, it does work with --remote")
+
 	Cmd.AddCommand(newCmd)
 	Cmd.AddCommand(protocCmd)
 	Cmd.AddCommand(templateCmd)
+	Cmd.AddCommand(addDepCmd)
 }
