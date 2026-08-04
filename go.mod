@@ -1,10 +1,10 @@
 module github.com/gioco-play/goctl-gfrpc
 
-go 1.26.5
+go 1.25.0
 
 require (
 	github.com/emicklei/proto v1.11.1
-	github.com/gioco-play/goctl-gfdep v0.0.0-20260804061302-95a6722c2484
+	github.com/gioco-play/goctl-gfdep v0.0.0-20260804062227-3decbb846db5
 	github.com/logrusorgru/aurora v2.0.3+incompatible
 	github.com/spf13/cobra v1.6.1
 	github.com/stretchr/testify v1.8.1
