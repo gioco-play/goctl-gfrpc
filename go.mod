@@ -2,6 +2,8 @@ module github.com/gioco-play/goctl-gfrpc
 
 go 1.19
 
+toolchain go1.24.4
+
 require (
 	github.com/emicklei/proto v1.11.1
 	github.com/gioco-play/goctl-gfdep v0.0.0-20260803104102-311c4d472eca
