@@ -41,7 +41,7 @@ var (
 	addDepCmd = &cobra.Command{
 		Use:     "add-dep",
 		Short:   "Inject a dependency into an existing service",
-		Example: "goctl-gfrpc rpc add-dep --name=transaction --remote https://github.com/gioco-play/gf-template",
+		Example: "goctl-gfrpc rpc add-dep --name=transaction --remote https://github.com/gioco-play/gf-template\n\tgoctl-gfrpc rpc add-dep --name=notify,grabber --remote https://github.com/gioco-play/gf-template",
 		RunE:    cli.AddDep,
 	}
 )
@@ -117,7 +117,8 @@ func init() {
 		" of the remote repo, it does work with --remote")
 
 	addDepCmd.Flags().StringVar(&cli.VarStringName, "name", "", "The dependency name, "+
-		"matching <template repo>/deps/<name>.tpl")
+		"matching <template repo>/deps/<name>.tpl. Comma-separated to inject multiple "+
+		"dependencies in one run, e.g. --name=notify,grabber")
 	addDepCmd.Flags().StringVar(&cli.VarStringHome, "home", "", "The goctl home path "+
 		"of the template, --home and --remote cannot be set at the same time, if they are, --remote "+
 		"has higher priority")
