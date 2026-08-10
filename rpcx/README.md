@@ -163,6 +163,15 @@ cd obfish-vendor-go/rpc
 goctl-gfrpc rpc add-dep --name=transaction --remote https://github.com/gioco-play/gf-template
 ```
 
+服務目錄下的 `makefile` 已內建對應 target，也可以直接用：
+
+```Bash
+make add-dep NAME=transaction
+```
+
+`REMOTE` 預設為 `https://github.com/gioco-play/gf-template`，可用 `make add-dep NAME=xxx REMOTE=...` 覆寫。
+> 註：此 target 只會出現在新產生的服務（`rpc new` / 第一次 `rpc protoc`）；已存在的舊 `makefile` 需自行手動加上。
+
 ## rpc 服務產生 example
 詳情見 [example/rpc](https://github.com/zeromicro/go-zero/tree/master/tools/goctl/example)
 
