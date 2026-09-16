@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/gioco-play/goctl-gfrpc/menux"
 	"github.com/gioco-play/goctl-gfrpc/rpcx"
 	"github.com/gioco-play/goctl-gfrpc/tplx"
 	"github.com/logrusorgru/aurora"
@@ -30,6 +31,7 @@ var (
 func init() {
 	rootCmd.AddCommand(tplx.Cmd)
 	rootCmd.AddCommand(rpcx.Cmd)
+	rootCmd.AddCommand(menux.Cmd)
 }
 
 func supportGoStdFlag(args []string) []string {
